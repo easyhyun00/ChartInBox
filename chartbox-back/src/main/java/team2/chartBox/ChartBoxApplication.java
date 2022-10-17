@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import team2.chartBox.model.Member;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 @Slf4j
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
+// @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @SpringBootApplication
 public class ChartBoxApplication {
 
@@ -23,7 +21,7 @@ public class ChartBoxApplication {
 	}
 
 	@GetMapping("/") // HttpSession 사용
-	public String home(@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
+	public String home(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
 		if (loginMember != null)
 			return loginMember.getUserNickname();
 		return "비회원";

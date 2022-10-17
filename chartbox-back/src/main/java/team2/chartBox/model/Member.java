@@ -1,7 +1,6 @@
 package team2.chartBox.model;
 
 import lombok.*;
-// import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
