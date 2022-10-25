@@ -1,10 +1,10 @@
-package team2.chartBox.controller.member;
+package team2.chartBox.member.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import team2.chartBox.model.Member;
-import team2.chartBox.service.MemberService;
+import team2.chartBox.member.entity.Member;
+import team2.chartBox.member.service.MemberService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package team2.chartBox.service;
+package team2.chartBox.member.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import team2.chartBox.model.Member;
-import team2.chartBox.repository.MemberRepository;
+import team2.chartBox.member.entity.Member;
+import team2.chartBox.member.repository.MemberRepository;
 
 import java.util.List;
 
@@ -57,7 +57,9 @@ public class MemberService {
         return true; // 닉네임이 존재함 = 닉네임 사용 불가능
     }
 
-    // 회원가입
+    /*
+        회원가입
+     */
     public String joinMember(Member member) {
         if (duplicateCheckMember(member.getUserEmail()) == null) {
             // DB에 email이 없음 = 회원가입 가능
@@ -73,18 +75,9 @@ public class MemberService {
         return "email";
     }
 
-//    // 회원가입
-//    public boolean joinMember(Member member) {
-//        if (duplicateCheckMember(member.getUserEmail()) == null) {
-//            // DB에 email이 없음 = 회원가입 가능
-//            saveMember(member);
-//            return true;
-//        }
-//        // 이미 DB에 중복된 email 있음 = 회원가입 불가능
-//        return false;
-//    }
-
-    // 로그인
+    /*
+        로그인
+     */
     public Member loginMember(String userEmail, String userPassword) {
 
         // BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -103,7 +96,9 @@ public class MemberService {
         return null;
     }
 
-    // 임시 비밀번호 생성
+    /*
+        임시 비밀번호 생성
+     */
     public String getTmpPassword() {
         char[] charSet = new char[]{ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
@@ -123,7 +118,9 @@ public class MemberService {
         return password;
     }
 
-    // 비밀번호 업데이트
+    /*
+        비밀번호 업데이트
+     */
     public boolean updatePassword(String tmpPassword, String memberEmail) {
 
         // memberEmail 회원 존재하는지 찾음
@@ -139,7 +136,9 @@ public class MemberService {
         return true;
     }
 
-    // 메일 전송
+    /*
+        메일 전송
+     */
     public void mailSend(String tmpPassword, String UserEmail) {
 
         SimpleMailMessage message = new SimpleMailMessage();

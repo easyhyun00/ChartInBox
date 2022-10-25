@@ -1,11 +1,11 @@
-package team2.chartBox.controller.member;
+package team2.chartBox.member.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import team2.chartBox.SessionConst;
-import team2.chartBox.model.Member;
-import team2.chartBox.service.MemberService;
+import team2.chartBox.member.entity.Member;
+import team2.chartBox.member.service.MemberService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,9 +54,7 @@ public class LoginController {
         return true; // response.sendRedirect(redirect_url);
     }
 
-    /*
-    비밀번호 찾기 메일 인증 구현하기! -> 이메일로 임시 비밀번호 발급 도전해보기!
-    */
+    // 비밀번호 찾기 메일 인증
     @PostMapping("/login/findPw")
     public boolean findPassword(@RequestBody Member member) {
 
@@ -77,6 +75,6 @@ public class LoginController {
         // 메일 생성, 전송
         memberService.mailSend(tmpPassword, sendEmail);
 
-       return true;
+        return true;
     }
 }

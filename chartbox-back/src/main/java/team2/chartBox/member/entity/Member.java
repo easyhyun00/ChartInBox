@@ -1,4 +1,4 @@
-package team2.chartBox.model;
+package team2.chartBox.member.entity;
 
 import lombok.*;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Table(name = "member")
 @Entity
-// @Data
 @Getter @Setter
 @AllArgsConstructor
 // @NoArgsConstructor
@@ -29,23 +28,10 @@ public class Member {
     public Member() {
     }
 
-    // @Builder
+    @Builder
     public Member(String userEmail, String userPassword, String userNickname) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userNickname = userNickname;
     }
-
-//    public static Member createMember(MemberJoinDto memberJoinDto) {
-//        Member member = Member.builder()
-//                .userId(memberJoinDto.getUserId())
-//                .userPassword(memberJoinDto.getUserPassword())
-//                .userName(memberJoinDto.getUserName())
-//                .userBirth(memberJoinDto.getUserBirth())
-//                .userGender(memberJoinDto.getUserGender())
-//                .userNickname(memberJoinDto.getUserNickname())
-//                .userTos(memberJoinDto.getUserTos())
-//                .build();
-//        return member;
-//    }
 }
